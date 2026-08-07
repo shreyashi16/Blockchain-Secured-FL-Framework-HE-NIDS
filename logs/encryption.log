@@ -1,0 +1,126 @@
+2026-08-08 00:28:16 | INFO     | encryption.context     | Generating CKKS context (poly_modulus_degree=8192, coeff_mod_bit_sizes=[60, 40, 40, 60])
+2026-08-08 00:28:18 | INFO     | encryption.context     | CKKS context ready. Public context size: 35293239 bytes
+2026-08-08 00:28:18 | INFO     | encryption.keys        | KeyManager initialised with context version 'he-ctx-v1'
+2026-08-08 00:28:23 | INFO     | encryption.secure_aggregation | Round 1 | starting secure aggregation for 3 clients
+2026-08-08 00:28:23 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=1 dim=72 bytes=331536 hash=03a7410c50f297d3
+2026-08-08 00:28:23 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=1 dim=72 bytes=331364 hash=fbefc9bc6437e6e6
+2026-08-08 00:28:24 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=1 dim=72 bytes=331464 hash=657d314647debaa6
+2026-08-08 00:28:24 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 00:28:24 | INFO     | encryption.secure_aggregation | Round 1 | secure aggregation complete | validation=PASSED
+2026-08-08 00:28:32 | INFO     | encryption.secure_aggregation | Round 2 | starting secure aggregation for 3 clients
+2026-08-08 00:28:32 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=2 dim=72 bytes=331589 hash=b403f4722552d307
+2026-08-08 00:28:32 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=2 dim=72 bytes=331669 hash=11a4a152682d2da9
+2026-08-08 00:28:33 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=2 dim=72 bytes=331683 hash=9cc810f1f29ec4ea
+2026-08-08 00:28:33 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 00:28:33 | INFO     | encryption.secure_aggregation | Round 2 | secure aggregation complete | validation=PASSED
+2026-08-08 00:28:44 | INFO     | encryption.secure_aggregation | Round 3 | starting secure aggregation for 3 clients
+2026-08-08 00:28:44 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=3 dim=72 bytes=331223 hash=e03b62f15d66e9de
+2026-08-08 00:28:45 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=3 dim=72 bytes=331482 hash=f900d33eee7156be
+2026-08-08 00:28:45 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=3 dim=72 bytes=331138 hash=4c62b6ac1fc58d79
+2026-08-08 00:28:45 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 00:28:45 | INFO     | encryption.secure_aggregation | Round 3 | secure aggregation complete | validation=PASSED
+2026-08-08 00:29:00 | INFO     | encryption.secure_aggregation | Round 4 | starting secure aggregation for 3 clients
+2026-08-08 00:29:00 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=4 dim=72 bytes=331544 hash=e2d39215a5829ec1
+2026-08-08 00:29:00 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=4 dim=72 bytes=331000 hash=d36288d8dd0d8b02
+2026-08-08 00:29:00 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=4 dim=72 bytes=331119 hash=6f33090501c74ffd
+2026-08-08 00:29:00 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 00:29:00 | INFO     | encryption.secure_aggregation | Round 4 | secure aggregation complete | validation=PASSED
+2026-08-08 00:29:18 | INFO     | encryption.secure_aggregation | Round 5 | starting secure aggregation for 3 clients
+2026-08-08 00:29:18 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=5 dim=72 bytes=331166 hash=f272f393ede037be
+2026-08-08 00:29:18 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=5 dim=72 bytes=331179 hash=cd44ab00dcffacde
+2026-08-08 00:29:18 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=5 dim=72 bytes=331041 hash=97cbfe110b352a3f
+2026-08-08 00:29:18 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 00:29:18 | INFO     | encryption.secure_aggregation | Round 5 | secure aggregation complete | validation=PASSED
+2026-08-08 00:29:40 | INFO     | encryption.secure_aggregation | Round 6 | starting secure aggregation for 3 clients
+2026-08-08 00:29:40 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=6 dim=72 bytes=331583 hash=ceef87cee762157d
+2026-08-08 00:29:40 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=6 dim=72 bytes=331632 hash=55429a68f2b35b29
+2026-08-08 00:29:40 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=6 dim=72 bytes=331103 hash=c5b3a2bcb3333ca4
+2026-08-08 00:29:40 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 00:29:40 | INFO     | encryption.secure_aggregation | Round 6 | secure aggregation complete | validation=PASSED
+2026-08-08 00:30:06 | INFO     | encryption.secure_aggregation | Round 7 | starting secure aggregation for 3 clients
+2026-08-08 00:30:06 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=7 dim=72 bytes=331485 hash=ac73f40f71ffd86e
+2026-08-08 00:30:06 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=7 dim=72 bytes=331594 hash=3bb7df1f635562cb
+2026-08-08 00:30:06 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=7 dim=72 bytes=331602 hash=644093b1293bf909
+2026-08-08 00:30:06 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 00:30:06 | INFO     | encryption.secure_aggregation | Round 7 | secure aggregation complete | validation=PASSED
+2026-08-08 00:30:36 | INFO     | encryption.secure_aggregation | Round 8 | starting secure aggregation for 3 clients
+2026-08-08 00:30:36 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=8 dim=72 bytes=331648 hash=da1d15b4ca71a0e6
+2026-08-08 00:30:36 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=8 dim=72 bytes=331575 hash=ba1890b991b3af89
+2026-08-08 00:30:36 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=8 dim=72 bytes=331579 hash=34e2332a2ecedb4c
+2026-08-08 00:30:36 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 00:30:36 | INFO     | encryption.secure_aggregation | Round 8 | secure aggregation complete | validation=PASSED
+2026-08-08 00:31:11 | INFO     | encryption.secure_aggregation | Round 9 | starting secure aggregation for 3 clients
+2026-08-08 00:31:11 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=9 dim=72 bytes=331492 hash=33fa18917604c593
+2026-08-08 00:31:11 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=9 dim=72 bytes=331024 hash=b9027b064fd27953
+2026-08-08 00:31:11 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=9 dim=72 bytes=331626 hash=0679c3f0ed4fbebb
+2026-08-08 00:31:11 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 00:31:11 | INFO     | encryption.secure_aggregation | Round 9 | secure aggregation complete | validation=PASSED
+2026-08-08 00:31:52 | INFO     | encryption.secure_aggregation | Round 10 | starting secure aggregation for 3 clients
+2026-08-08 00:31:52 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=10 dim=72 bytes=331428 hash=94291bf00d0bfc81
+2026-08-08 00:31:52 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=10 dim=72 bytes=331564 hash=6d656cba3456f465
+2026-08-08 00:31:52 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=10 dim=72 bytes=331518 hash=d61468e91b04dbc7
+2026-08-08 00:31:52 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 00:31:52 | INFO     | encryption.secure_aggregation | Round 10 | secure aggregation complete | validation=PASSED
+2026-08-08 01:13:44 | INFO     | encryption.context     | Generating CKKS context (poly_modulus_degree=8192, coeff_mod_bit_sizes=[60, 40, 40, 60])
+2026-08-08 01:13:45 | INFO     | encryption.context     | CKKS context ready. Public context size: 35291439 bytes
+2026-08-08 01:13:45 | INFO     | encryption.keys        | KeyManager initialised with context version 'he-ctx-v1'
+2026-08-08 01:13:47 | INFO     | encryption.secure_aggregation | Round 1 | starting secure aggregation for 3 clients
+2026-08-08 01:13:47 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=1 dim=72 bytes=331443 hash=816fb32f81e98804
+2026-08-08 01:13:47 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=1 dim=72 bytes=330865 hash=2093ff2bc2d133fc
+2026-08-08 01:13:47 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=1 dim=72 bytes=331610 hash=170b2ae4262611a4
+2026-08-08 01:13:47 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 01:13:47 | INFO     | encryption.secure_aggregation | Round 1 | secure aggregation complete | validation=PASSED
+2026-08-08 01:13:51 | INFO     | encryption.secure_aggregation | Round 2 | starting secure aggregation for 3 clients
+2026-08-08 01:13:51 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=2 dim=72 bytes=331610 hash=e28fa85a5fabf9c5
+2026-08-08 01:13:51 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=2 dim=72 bytes=330968 hash=8a7db8c120684177
+2026-08-08 01:13:51 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=2 dim=72 bytes=331720 hash=6a1620a3c105817f
+2026-08-08 01:13:51 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 01:13:51 | INFO     | encryption.secure_aggregation | Round 2 | secure aggregation complete | validation=PASSED
+2026-08-08 01:13:54 | INFO     | encryption.secure_aggregation | Round 3 | starting secure aggregation for 3 clients
+2026-08-08 01:13:55 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=3 dim=72 bytes=331225 hash=17daea0e2f21b5ae
+2026-08-08 01:13:55 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=3 dim=72 bytes=331482 hash=f5ff76ccc25d79ed
+2026-08-08 01:13:55 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=3 dim=72 bytes=331025 hash=436a0d4fc19b3ec3
+2026-08-08 01:13:55 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 01:13:55 | INFO     | encryption.secure_aggregation | Round 3 | secure aggregation complete | validation=PASSED
+2026-08-08 01:13:59 | INFO     | encryption.secure_aggregation | Round 4 | starting secure aggregation for 3 clients
+2026-08-08 01:13:59 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=4 dim=72 bytes=331684 hash=c1912f364a410287
+2026-08-08 01:13:59 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=4 dim=72 bytes=330936 hash=b121db44dcc44784
+2026-08-08 01:13:59 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=4 dim=72 bytes=331375 hash=78295df030950b48
+2026-08-08 01:13:59 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 01:13:59 | INFO     | encryption.secure_aggregation | Round 4 | secure aggregation complete | validation=PASSED
+2026-08-08 01:14:06 | INFO     | encryption.secure_aggregation | Round 5 | starting secure aggregation for 3 clients
+2026-08-08 01:14:06 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=5 dim=72 bytes=330749 hash=4df458227656e82d
+2026-08-08 01:14:06 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=5 dim=72 bytes=331591 hash=51f6a79460f0cd71
+2026-08-08 01:14:06 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=5 dim=72 bytes=331394 hash=f68e2a617b1c5dfb
+2026-08-08 01:14:06 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 01:14:06 | INFO     | encryption.secure_aggregation | Round 5 | secure aggregation complete | validation=PASSED
+2026-08-08 01:14:13 | INFO     | encryption.secure_aggregation | Round 6 | starting secure aggregation for 3 clients
+2026-08-08 01:14:13 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=6 dim=72 bytes=331502 hash=b017e79c4622e845
+2026-08-08 01:14:13 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=6 dim=72 bytes=331058 hash=65d19ac630e70783
+2026-08-08 01:14:13 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=6 dim=72 bytes=331674 hash=ea30b6f4b681d957
+2026-08-08 01:14:13 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 01:14:13 | INFO     | encryption.secure_aggregation | Round 6 | secure aggregation complete | validation=PASSED
+2026-08-08 01:14:27 | INFO     | encryption.secure_aggregation | Round 7 | starting secure aggregation for 3 clients
+2026-08-08 01:14:27 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=7 dim=72 bytes=331234 hash=bbeb951ca9c895b4
+2026-08-08 01:14:27 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=7 dim=72 bytes=331104 hash=1451d5ac33a00df1
+2026-08-08 01:14:27 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=7 dim=72 bytes=331494 hash=5c91bdbb813ec715
+2026-08-08 01:14:27 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 01:14:27 | INFO     | encryption.secure_aggregation | Round 7 | secure aggregation complete | validation=PASSED
+2026-08-08 01:14:51 | INFO     | encryption.secure_aggregation | Round 8 | starting secure aggregation for 3 clients
+2026-08-08 01:14:51 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=8 dim=72 bytes=331131 hash=60d13ccbdfb955dd
+2026-08-08 01:14:51 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=8 dim=72 bytes=331441 hash=b63af976f8890d3b
+2026-08-08 01:14:51 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=8 dim=72 bytes=331232 hash=e0e72e009634851c
+2026-08-08 01:14:51 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 01:14:51 | INFO     | encryption.secure_aggregation | Round 8 | secure aggregation complete | validation=PASSED
+2026-08-08 01:15:18 | INFO     | encryption.secure_aggregation | Round 9 | starting secure aggregation for 3 clients
+2026-08-08 01:15:18 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=9 dim=72 bytes=331667 hash=07f29c29b6f7f431
+2026-08-08 01:15:18 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=9 dim=72 bytes=331552 hash=14a55baddcd51e27
+2026-08-08 01:15:18 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=9 dim=72 bytes=331560 hash=d5fe1689cab0d3de
+2026-08-08 01:15:18 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 01:15:18 | INFO     | encryption.secure_aggregation | Round 9 | secure aggregation complete | validation=PASSED
+2026-08-08 01:15:49 | INFO     | encryption.secure_aggregation | Round 10 | starting secure aggregation for 3 clients
+2026-08-08 01:15:49 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=10 dim=72 bytes=331446 hash=f35c4fa528ee66a9
+2026-08-08 01:15:49 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=10 dim=72 bytes=331549 hash=c25ccc41d2d5e1e1
+2026-08-08 01:15:49 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=10 dim=72 bytes=331368 hash=a03abfef74cd18a6
+2026-08-08 01:15:49 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 01:15:49 | INFO     | encryption.secure_aggregation | Round 10 | secure aggregation complete | validation=PASSED

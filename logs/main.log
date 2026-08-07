@@ -1,0 +1,416 @@
+2026-08-08 00:28:13 | INFO     | train                  | Starting federated training | rounds=10 local_epochs=20 participation=1.00 partition=preassigned
+2026-08-08 00:28:13 | INFO     | federated.trainer      | Loading and partitioning dataset (strategy=preassigned)...
+2026-08-08 00:28:15 | INFO     | federated.dataset_partition | Client 1 | train=14642 val=2584 classes=13
+2026-08-08 00:28:15 | INFO     | federated.dataset_partition | Client 2 | train=14642 val=2584 classes=13
+2026-08-08 00:28:15 | INFO     | federated.dataset_partition | Client 3 | train=14642 val=2584 classes=13
+2026-08-08 00:28:16 | INFO     | federated.dataset_partition | Loaded global held-out test set | samples=7621 classes=13
+2026-08-08 00:28:16 | INFO     | encryption.context     | Generating CKKS context (poly_modulus_degree=8192, coeff_mod_bit_sizes=[60, 40, 40, 60])
+2026-08-08 00:28:18 | INFO     | encryption.context     | CKKS context ready. Public context size: 35293239 bytes
+2026-08-08 00:28:18 | INFO     | encryption.keys        | KeyManager initialised with context version 'he-ctx-v1'
+2026-08-08 00:28:18 | INFO     | federated.trainer      | Setup complete | clients=3 | classes=13 | global_test_samples=7621
+2026-08-08 00:28:18 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 00:28:18 | INFO     | federated.trainer      | COMMUNICATION ROUND 1 / 10
+2026-08-08 00:28:18 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 00:28:18 | INFO     | federated.server       | Selected participants for this round: [1, 2, 3]
+2026-08-08 00:28:18 | INFO     | federated.client.1     | Round 1 | client 1 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:28:20 | INFO     | federated.client.1     | Round 1 | client 1 | local eval -> acc=0.8483 prec=0.8828 rec=0.9057 f1=0.8836 roc_auc=0.9930 loss=0.3698
+2026-08-08 00:28:20 | INFO     | federated.client.2     | Round 1 | client 2 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:28:22 | INFO     | federated.client.2     | Round 1 | client 2 | local eval -> acc=0.8595 prec=0.8846 rec=0.9043 f1=0.8842 roc_auc=0.9928 loss=0.3468
+2026-08-08 00:28:22 | INFO     | federated.client.3     | Round 1 | client 3 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:28:23 | INFO     | federated.client.3     | Round 1 | client 3 | local eval -> acc=0.8595 prec=0.8853 rec=0.9101 f1=0.8879 roc_auc=0.9932 loss=0.3555
+2026-08-08 00:28:23 | INFO     | federated.aggregation  | Computed aggregation weights (sample_count): {1: 0.3333, 2: 0.3333, 3: 0.3333}
+2026-08-08 00:28:23 | INFO     | encryption.secure_aggregation | Round 1 | starting secure aggregation for 3 clients
+2026-08-08 00:28:23 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=1 dim=72 bytes=331536 hash=03a7410c50f297d3
+2026-08-08 00:28:23 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=1 dim=72 bytes=331364 hash=fbefc9bc6437e6e6
+2026-08-08 00:28:24 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=1 dim=72 bytes=331464 hash=657d314647debaa6
+2026-08-08 00:28:24 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 00:28:24 | INFO     | encryption.secure_aggregation | Round 1 | secure aggregation complete | validation=PASSED
+2026-08-08 00:28:24 | INFO     | federated.server       | Round 1 | GLOBAL model eval -> acc=0.8263 prec=0.7758 rec=0.8313 f1=0.7872 roc_auc=0.9915 loss=0.3911
+2026-08-08 00:28:24 | INFO     | federated.trainer      | Round 1 broadcast -> model_version=global-v1 validation_passed=True
+2026-08-08 00:28:24 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 00:28:24 | INFO     | federated.trainer      | COMMUNICATION ROUND 2 / 10
+2026-08-08 00:28:24 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 00:28:24 | INFO     | federated.server       | Selected participants for this round: [1, 2, 3]
+2026-08-08 00:28:24 | INFO     | federated.client.1     | Round 2 | client 1 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:28:27 | INFO     | federated.client.1     | Round 2 | client 1 | local eval -> acc=0.8754 prec=0.8910 rec=0.9102 f1=0.8952 roc_auc=0.9937 loss=0.2276
+2026-08-08 00:28:27 | INFO     | federated.client.2     | Round 2 | client 2 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:28:30 | INFO     | federated.client.2     | Round 2 | client 2 | local eval -> acc=0.8820 prec=0.8893 rec=0.9047 f1=0.8926 roc_auc=0.9935 loss=0.2123
+2026-08-08 00:28:30 | INFO     | federated.client.3     | Round 2 | client 3 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:28:32 | INFO     | federated.client.3     | Round 2 | client 3 | local eval -> acc=0.8897 prec=0.9009 rec=0.9176 f1=0.9046 roc_auc=0.9939 loss=0.2178
+2026-08-08 00:28:32 | INFO     | federated.aggregation  | Computed aggregation weights (sample_count): {1: 0.3333, 2: 0.3333, 3: 0.3333}
+2026-08-08 00:28:32 | INFO     | encryption.secure_aggregation | Round 2 | starting secure aggregation for 3 clients
+2026-08-08 00:28:32 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=2 dim=72 bytes=331589 hash=b403f4722552d307
+2026-08-08 00:28:32 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=2 dim=72 bytes=331669 hash=11a4a152682d2da9
+2026-08-08 00:28:33 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=2 dim=72 bytes=331683 hash=9cc810f1f29ec4ea
+2026-08-08 00:28:33 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 00:28:33 | INFO     | encryption.secure_aggregation | Round 2 | secure aggregation complete | validation=PASSED
+2026-08-08 00:28:33 | INFO     | federated.server       | Round 2 | GLOBAL model eval -> acc=0.8761 prec=0.7924 rec=0.8309 f1=0.8031 roc_auc=0.9922 loss=0.2294
+2026-08-08 00:28:33 | INFO     | federated.trainer      | Round 2 broadcast -> model_version=global-v2 validation_passed=True
+2026-08-08 00:28:33 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 00:28:33 | INFO     | federated.trainer      | COMMUNICATION ROUND 3 / 10
+2026-08-08 00:28:33 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 00:28:33 | INFO     | federated.server       | Selected participants for this round: [1, 2, 3]
+2026-08-08 00:28:33 | INFO     | federated.client.1     | Round 3 | client 1 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:28:37 | INFO     | federated.client.1     | Round 3 | client 1 | local eval -> acc=0.8936 prec=0.8976 rec=0.9085 f1=0.9004 roc_auc=0.9937 loss=0.2074
+2026-08-08 00:28:37 | INFO     | federated.client.2     | Round 3 | client 2 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:28:41 | INFO     | federated.client.2     | Round 3 | client 2 | local eval -> acc=0.8978 prec=0.8987 rec=0.9088 f1=0.9016 roc_auc=0.9938 loss=0.1965
+2026-08-08 00:28:41 | INFO     | federated.client.3     | Round 3 | client 3 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:28:44 | INFO     | federated.client.3     | Round 3 | client 3 | local eval -> acc=0.8947 prec=0.8993 rec=0.9121 f1=0.9028 roc_auc=0.9941 loss=0.2006
+2026-08-08 00:28:44 | INFO     | federated.aggregation  | Computed aggregation weights (sample_count): {1: 0.3333, 2: 0.3333, 3: 0.3333}
+2026-08-08 00:28:44 | INFO     | encryption.secure_aggregation | Round 3 | starting secure aggregation for 3 clients
+2026-08-08 00:28:44 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=3 dim=72 bytes=331223 hash=e03b62f15d66e9de
+2026-08-08 00:28:45 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=3 dim=72 bytes=331482 hash=f900d33eee7156be
+2026-08-08 00:28:45 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=3 dim=72 bytes=331138 hash=4c62b6ac1fc58d79
+2026-08-08 00:28:45 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 00:28:45 | INFO     | encryption.secure_aggregation | Round 3 | secure aggregation complete | validation=PASSED
+2026-08-08 00:28:45 | INFO     | federated.server       | Round 3 | GLOBAL model eval -> acc=0.9097 prec=0.7998 rec=0.8270 f1=0.8099 roc_auc=0.9923 loss=0.1922
+2026-08-08 00:28:45 | INFO     | federated.trainer      | Round 3 broadcast -> model_version=global-v3 validation_passed=True
+2026-08-08 00:28:45 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 00:28:45 | INFO     | federated.trainer      | COMMUNICATION ROUND 4 / 10
+2026-08-08 00:28:45 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 00:28:45 | INFO     | federated.server       | Selected participants for this round: [1, 2, 3]
+2026-08-08 00:28:45 | INFO     | federated.client.1     | Round 4 | client 1 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:28:50 | INFO     | federated.client.1     | Round 4 | client 1 | local eval -> acc=0.8986 prec=0.9002 rec=0.9067 f1=0.9015 roc_auc=0.9937 loss=0.2028
+2026-08-08 00:28:50 | INFO     | federated.client.2     | Round 4 | client 2 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:28:55 | INFO     | federated.client.2     | Round 4 | client 2 | local eval -> acc=0.9063 prec=0.9040 rec=0.9110 f1=0.9067 roc_auc=0.9940 loss=0.1909
+2026-08-08 00:28:55 | INFO     | federated.client.3     | Round 4 | client 3 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:29:00 | INFO     | federated.client.3     | Round 4 | client 3 | local eval -> acc=0.9033 prec=0.9025 rec=0.9108 f1=0.9056 roc_auc=0.9941 loss=0.1946
+2026-08-08 00:29:00 | INFO     | federated.aggregation  | Computed aggregation weights (sample_count): {1: 0.3333, 2: 0.3333, 3: 0.3333}
+2026-08-08 00:29:00 | INFO     | encryption.secure_aggregation | Round 4 | starting secure aggregation for 3 clients
+2026-08-08 00:29:00 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=4 dim=72 bytes=331544 hash=e2d39215a5829ec1
+2026-08-08 00:29:00 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=4 dim=72 bytes=331000 hash=d36288d8dd0d8b02
+2026-08-08 00:29:00 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=4 dim=72 bytes=331119 hash=6f33090501c74ffd
+2026-08-08 00:29:00 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 00:29:00 | INFO     | encryption.secure_aggregation | Round 4 | secure aggregation complete | validation=PASSED
+2026-08-08 00:29:00 | INFO     | federated.server       | Round 4 | GLOBAL model eval -> acc=0.9228 prec=0.8031 rec=0.8242 f1=0.8118 roc_auc=0.9923 loss=0.1751
+2026-08-08 00:29:00 | INFO     | federated.trainer      | Round 4 broadcast -> model_version=global-v4 validation_passed=True
+2026-08-08 00:29:00 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 00:29:00 | INFO     | federated.trainer      | COMMUNICATION ROUND 5 / 10
+2026-08-08 00:29:00 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 00:29:00 | INFO     | federated.server       | Selected participants for this round: [1, 2, 3]
+2026-08-08 00:29:00 | INFO     | federated.client.1     | Round 5 | client 1 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:29:06 | INFO     | federated.client.1     | Round 5 | client 1 | local eval -> acc=0.9002 prec=0.8987 rec=0.9041 f1=0.9004 roc_auc=0.9937 loss=0.2030
+2026-08-08 00:29:06 | INFO     | federated.client.2     | Round 5 | client 2 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:29:12 | INFO     | federated.client.2     | Round 5 | client 2 | local eval -> acc=0.9079 prec=0.9035 rec=0.9085 f1=0.9055 roc_auc=0.9939 loss=0.1936
+2026-08-08 00:29:12 | INFO     | federated.client.3     | Round 5 | client 3 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:29:18 | INFO     | federated.client.3     | Round 5 | client 3 | local eval -> acc=0.9033 prec=0.9018 rec=0.9091 f1=0.9046 roc_auc=0.9941 loss=0.1947
+2026-08-08 00:29:18 | INFO     | federated.aggregation  | Computed aggregation weights (sample_count): {1: 0.3333, 2: 0.3333, 3: 0.3333}
+2026-08-08 00:29:18 | INFO     | encryption.secure_aggregation | Round 5 | starting secure aggregation for 3 clients
+2026-08-08 00:29:18 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=5 dim=72 bytes=331166 hash=f272f393ede037be
+2026-08-08 00:29:18 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=5 dim=72 bytes=331179 hash=cd44ab00dcffacde
+2026-08-08 00:29:18 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=5 dim=72 bytes=331041 hash=97cbfe110b352a3f
+2026-08-08 00:29:18 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 00:29:18 | INFO     | encryption.secure_aggregation | Round 5 | secure aggregation complete | validation=PASSED
+2026-08-08 00:29:19 | INFO     | federated.server       | Round 5 | GLOBAL model eval -> acc=0.9274 prec=0.8085 rec=0.8315 f1=0.8176 roc_auc=0.9922 loss=0.1666
+2026-08-08 00:29:19 | INFO     | federated.trainer      | Round 5 broadcast -> model_version=global-v5 validation_passed=True
+2026-08-08 00:29:19 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 00:29:19 | INFO     | federated.trainer      | COMMUNICATION ROUND 6 / 10
+2026-08-08 00:29:19 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 00:29:19 | INFO     | federated.server       | Selected participants for this round: [1, 2, 3]
+2026-08-08 00:29:19 | INFO     | federated.client.1     | Round 6 | client 1 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:29:26 | INFO     | federated.client.1     | Round 6 | client 1 | local eval -> acc=0.9040 prec=0.9018 rec=0.9047 f1=0.9024 roc_auc=0.9937 loss=0.2067
+2026-08-08 00:29:26 | INFO     | federated.client.2     | Round 6 | client 2 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:29:33 | INFO     | federated.client.2     | Round 6 | client 2 | local eval -> acc=0.9102 prec=0.9059 rec=0.9095 f1=0.9072 roc_auc=0.9938 loss=0.2001
+2026-08-08 00:29:33 | INFO     | federated.client.3     | Round 6 | client 3 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:29:40 | INFO     | federated.client.3     | Round 6 | client 3 | local eval -> acc=0.9087 prec=0.9057 rec=0.9104 f1=0.9077 roc_auc=0.9940 loss=0.1998
+2026-08-08 00:29:40 | INFO     | federated.aggregation  | Computed aggregation weights (sample_count): {1: 0.3333, 2: 0.3333, 3: 0.3333}
+2026-08-08 00:29:40 | INFO     | encryption.secure_aggregation | Round 6 | starting secure aggregation for 3 clients
+2026-08-08 00:29:40 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=6 dim=72 bytes=331583 hash=ceef87cee762157d
+2026-08-08 00:29:40 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=6 dim=72 bytes=331632 hash=55429a68f2b35b29
+2026-08-08 00:29:40 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=6 dim=72 bytes=331103 hash=c5b3a2bcb3333ca4
+2026-08-08 00:29:40 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 00:29:40 | INFO     | encryption.secure_aggregation | Round 6 | secure aggregation complete | validation=PASSED
+2026-08-08 00:29:41 | INFO     | federated.server       | Round 6 | GLOBAL model eval -> acc=0.9307 prec=0.8099 rec=0.8313 f1=0.8183 roc_auc=0.9921 loss=0.1638
+2026-08-08 00:29:41 | INFO     | federated.trainer      | Round 6 broadcast -> model_version=global-v6 validation_passed=True
+2026-08-08 00:29:41 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 00:29:41 | INFO     | federated.trainer      | COMMUNICATION ROUND 7 / 10
+2026-08-08 00:29:41 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 00:29:41 | INFO     | federated.server       | Selected participants for this round: [1, 2, 3]
+2026-08-08 00:29:41 | INFO     | federated.client.1     | Round 7 | client 1 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:29:50 | INFO     | federated.client.1     | Round 7 | client 1 | local eval -> acc=0.9052 prec=0.9028 rec=0.9034 f1=0.9024 roc_auc=0.9936 loss=0.2140
+2026-08-08 00:29:50 | INFO     | federated.client.2     | Round 7 | client 2 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:29:58 | INFO     | federated.client.2     | Round 7 | client 2 | local eval -> acc=0.9091 prec=0.9046 rec=0.9046 f1=0.9044 roc_auc=0.9938 loss=0.2077
+2026-08-08 00:29:58 | INFO     | federated.client.3     | Round 7 | client 3 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:30:06 | INFO     | federated.client.3     | Round 7 | client 3 | local eval -> acc=0.9079 prec=0.9034 rec=0.9064 f1=0.9047 roc_auc=0.9939 loss=0.2082
+2026-08-08 00:30:06 | INFO     | federated.aggregation  | Computed aggregation weights (sample_count): {1: 0.3333, 2: 0.3333, 3: 0.3333}
+2026-08-08 00:30:06 | INFO     | encryption.secure_aggregation | Round 7 | starting secure aggregation for 3 clients
+2026-08-08 00:30:06 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=7 dim=72 bytes=331485 hash=ac73f40f71ffd86e
+2026-08-08 00:30:06 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=7 dim=72 bytes=331594 hash=3bb7df1f635562cb
+2026-08-08 00:30:06 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=7 dim=72 bytes=331602 hash=644093b1293bf909
+2026-08-08 00:30:06 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 00:30:06 | INFO     | encryption.secure_aggregation | Round 7 | secure aggregation complete | validation=PASSED
+2026-08-08 00:30:07 | INFO     | federated.server       | Round 7 | GLOBAL model eval -> acc=0.9318 prec=0.8098 rec=0.8297 f1=0.8174 roc_auc=0.9920 loss=0.1634
+2026-08-08 00:30:07 | INFO     | federated.trainer      | Round 7 broadcast -> model_version=global-v7 validation_passed=True
+2026-08-08 00:30:07 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 00:30:07 | INFO     | federated.trainer      | COMMUNICATION ROUND 8 / 10
+2026-08-08 00:30:07 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 00:30:07 | INFO     | federated.server       | Selected participants for this round: [1, 2, 3]
+2026-08-08 00:30:07 | INFO     | federated.client.1     | Round 8 | client 1 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:30:17 | INFO     | federated.client.1     | Round 8 | client 1 | local eval -> acc=0.9040 prec=0.9012 rec=0.9019 f1=0.9008 roc_auc=0.9935 loss=0.2216
+2026-08-08 00:30:17 | INFO     | federated.client.2     | Round 8 | client 2 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:30:26 | INFO     | federated.client.2     | Round 8 | client 2 | local eval -> acc=0.9094 prec=0.9046 rec=0.9035 f1=0.9040 roc_auc=0.9937 loss=0.2164
+2026-08-08 00:30:26 | INFO     | federated.client.3     | Round 8 | client 3 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:30:36 | INFO     | federated.client.3     | Round 8 | client 3 | local eval -> acc=0.9056 prec=0.9020 rec=0.9041 f1=0.9030 roc_auc=0.9938 loss=0.2172
+2026-08-08 00:30:36 | INFO     | federated.aggregation  | Computed aggregation weights (sample_count): {1: 0.3333, 2: 0.3333, 3: 0.3333}
+2026-08-08 00:30:36 | INFO     | encryption.secure_aggregation | Round 8 | starting secure aggregation for 3 clients
+2026-08-08 00:30:36 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=8 dim=72 bytes=331648 hash=da1d15b4ca71a0e6
+2026-08-08 00:30:36 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=8 dim=72 bytes=331575 hash=ba1890b991b3af89
+2026-08-08 00:30:36 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=8 dim=72 bytes=331579 hash=34e2332a2ecedb4c
+2026-08-08 00:30:36 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 00:30:36 | INFO     | encryption.secure_aggregation | Round 8 | secure aggregation complete | validation=PASSED
+2026-08-08 00:30:37 | INFO     | federated.server       | Round 8 | GLOBAL model eval -> acc=0.9344 prec=0.8288 rec=0.8376 f1=0.8301 roc_auc=0.9920 loss=0.1642
+2026-08-08 00:30:37 | INFO     | federated.trainer      | Round 8 broadcast -> model_version=global-v8 validation_passed=True
+2026-08-08 00:30:37 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 00:30:37 | INFO     | federated.trainer      | COMMUNICATION ROUND 9 / 10
+2026-08-08 00:30:37 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 00:30:37 | INFO     | federated.server       | Selected participants for this round: [1, 2, 3]
+2026-08-08 00:30:37 | INFO     | federated.client.1     | Round 9 | client 1 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:30:47 | INFO     | federated.client.1     | Round 9 | client 1 | local eval -> acc=0.9075 prec=0.9045 rec=0.9032 f1=0.9031 roc_auc=0.9935 loss=0.2293
+2026-08-08 00:30:47 | INFO     | federated.client.2     | Round 9 | client 2 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:31:00 | INFO     | federated.client.2     | Round 9 | client 2 | local eval -> acc=0.9091 prec=0.9038 rec=0.9021 f1=0.9028 roc_auc=0.9937 loss=0.2255
+2026-08-08 00:31:00 | INFO     | federated.client.3     | Round 9 | client 3 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:31:11 | INFO     | federated.client.3     | Round 9 | client 3 | local eval -> acc=0.9079 prec=0.9045 rec=0.9042 f1=0.9044 roc_auc=0.9938 loss=0.2259
+2026-08-08 00:31:11 | INFO     | federated.aggregation  | Computed aggregation weights (sample_count): {1: 0.3333, 2: 0.3333, 3: 0.3333}
+2026-08-08 00:31:11 | INFO     | encryption.secure_aggregation | Round 9 | starting secure aggregation for 3 clients
+2026-08-08 00:31:11 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=9 dim=72 bytes=331492 hash=33fa18917604c593
+2026-08-08 00:31:11 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=9 dim=72 bytes=331024 hash=b9027b064fd27953
+2026-08-08 00:31:11 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=9 dim=72 bytes=331626 hash=0679c3f0ed4fbebb
+2026-08-08 00:31:11 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 00:31:11 | INFO     | encryption.secure_aggregation | Round 9 | secure aggregation complete | validation=PASSED
+2026-08-08 00:31:12 | INFO     | federated.server       | Round 9 | GLOBAL model eval -> acc=0.9357 prec=0.8124 rec=0.8293 f1=0.8184 roc_auc=0.9919 loss=0.1658
+2026-08-08 00:31:12 | INFO     | federated.trainer      | Round 9 broadcast -> model_version=global-v9 validation_passed=True
+2026-08-08 00:31:12 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 00:31:12 | INFO     | federated.trainer      | COMMUNICATION ROUND 10 / 10
+2026-08-08 00:31:12 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 00:31:12 | INFO     | federated.server       | Selected participants for this round: [1, 2, 3]
+2026-08-08 00:31:12 | INFO     | federated.client.1     | Round 10 | client 1 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:31:24 | INFO     | federated.client.1     | Round 10 | client 1 | local eval -> acc=0.9102 prec=0.9079 rec=0.9063 f1=0.9066 roc_auc=0.9935 loss=0.2369
+2026-08-08 00:31:24 | INFO     | federated.client.2     | Round 10 | client 2 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:31:36 | INFO     | federated.client.2     | Round 10 | client 2 | local eval -> acc=0.9114 prec=0.9068 rec=0.9052 f1=0.9057 roc_auc=0.9936 loss=0.2361
+2026-08-08 00:31:37 | INFO     | federated.client.3     | Round 10 | client 3 | local training start (local_epochs=20, samples=14642)
+2026-08-08 00:31:52 | INFO     | federated.client.3     | Round 10 | client 3 | local eval -> acc=0.9067 prec=0.9026 rec=0.9014 f1=0.9019 roc_auc=0.9937 loss=0.2360
+2026-08-08 00:31:52 | INFO     | federated.aggregation  | Computed aggregation weights (sample_count): {1: 0.3333, 2: 0.3333, 3: 0.3333}
+2026-08-08 00:31:52 | INFO     | encryption.secure_aggregation | Round 10 | starting secure aggregation for 3 clients
+2026-08-08 00:31:52 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=10 dim=72 bytes=331428 hash=94291bf00d0bfc81
+2026-08-08 00:31:52 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=10 dim=72 bytes=331564 hash=6d656cba3456f465
+2026-08-08 00:31:52 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=10 dim=72 bytes=331518 hash=d61468e91b04dbc7
+2026-08-08 00:31:52 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 00:31:52 | INFO     | encryption.secure_aggregation | Round 10 | secure aggregation complete | validation=PASSED
+2026-08-08 00:31:53 | INFO     | federated.server       | Round 10 | GLOBAL model eval -> acc=0.9370 prec=0.8302 rec=0.8366 f1=0.8300 roc_auc=0.9918 loss=0.1679
+2026-08-08 00:31:53 | INFO     | federated.trainer      | Round 10 broadcast -> model_version=global-v10 validation_passed=True
+2026-08-08 00:31:53 | INFO     | train                  | Federated training complete in 219.9s
+2026-08-08 00:31:53 | INFO     | train                  | Saved round history + blockchain metadata -> C:\Users\Lenovo\Downloads\Blockchain-Secured-FL-Framework-HE-NIDS\project\outputs\metadata\round_history.json
+2026-08-08 00:31:54 | INFO     | train                  | Saved global ensemble model -> C:\Users\Lenovo\Downloads\Blockchain-Secured-FL-Framework-HE-NIDS\project\outputs\models\global_model.pkl
+2026-08-08 00:31:57 | INFO     | federated.dataset_partition | Loaded global held-out test set | samples=7621 classes=13
+2026-08-08 00:31:57 | INFO     | train                  | All plots saved to C:\Users\Lenovo\Downloads\Blockchain-Secured-FL-Framework-HE-NIDS\project\outputs\plots
+2026-08-08 00:31:57 | INFO     | train                  | FINAL GLOBAL MODEL (round 10) -> acc=0.9370 prec=0.8302 rec=0.8366 f1=0.8300 roc_auc=0.9918 loss=0.1679
+2026-08-08 01:13:43 | INFO     | train                  | Starting federated training | rounds=10 local_epochs=20 participation=1.00 partition=preassigned
+2026-08-08 01:13:43 | INFO     | federated.trainer      | Loading and partitioning dataset (strategy=preassigned)...
+2026-08-08 01:13:44 | INFO     | federated.dataset_partition | Client 1 | train=14642 val=2584 classes=13
+2026-08-08 01:13:44 | INFO     | federated.dataset_partition | Client 2 | train=14642 val=2584 classes=13
+2026-08-08 01:13:44 | INFO     | federated.dataset_partition | Client 3 | train=14642 val=2584 classes=13
+2026-08-08 01:13:44 | INFO     | federated.dataset_partition | Loaded global held-out test set | samples=7621 classes=13
+2026-08-08 01:13:44 | INFO     | encryption.context     | Generating CKKS context (poly_modulus_degree=8192, coeff_mod_bit_sizes=[60, 40, 40, 60])
+2026-08-08 01:13:45 | INFO     | encryption.context     | CKKS context ready. Public context size: 35291439 bytes
+2026-08-08 01:13:45 | INFO     | encryption.keys        | KeyManager initialised with context version 'he-ctx-v1'
+2026-08-08 01:13:45 | INFO     | federated.trainer      | Setup complete | clients=3 | classes=13 | global_test_samples=7621
+2026-08-08 01:13:45 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 01:13:45 | INFO     | federated.trainer      | COMMUNICATION ROUND 1 / 10
+2026-08-08 01:13:45 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 01:13:45 | INFO     | federated.server       | Selected participants for this round: [1, 2, 3]
+2026-08-08 01:13:45 | INFO     | federated.client.1     | Round 1 | client 1 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:13:46 | INFO     | federated.client.1     | Round 1 | client 1 | local eval -> acc=0.8444 prec=0.8788 rec=0.9019 f1=0.8800 roc_auc=0.9923 loss=0.3766
+2026-08-08 01:13:46 | INFO     | federated.client.2     | Round 1 | client 2 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:13:47 | INFO     | federated.client.2     | Round 1 | client 2 | local eval -> acc=0.8591 prec=0.8823 rec=0.9056 f1=0.8847 roc_auc=0.9928 loss=0.3480
+2026-08-08 01:13:47 | INFO     | federated.client.3     | Round 1 | client 3 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:13:47 | INFO     | federated.client.3     | Round 1 | client 3 | local eval -> acc=0.8576 prec=0.8827 rec=0.9062 f1=0.8851 roc_auc=0.9928 loss=0.3559
+2026-08-08 01:13:47 | INFO     | federated.aggregation  | Computed aggregation weights (sample_count): {1: 0.3333, 2: 0.3333, 3: 0.3333}
+2026-08-08 01:13:47 | INFO     | encryption.secure_aggregation | Round 1 | starting secure aggregation for 3 clients
+2026-08-08 01:13:47 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=1 dim=72 bytes=331443 hash=816fb32f81e98804
+2026-08-08 01:13:47 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=1 dim=72 bytes=330865 hash=2093ff2bc2d133fc
+2026-08-08 01:13:47 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=1 dim=72 bytes=331610 hash=170b2ae4262611a4
+2026-08-08 01:13:47 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 01:13:47 | INFO     | encryption.secure_aggregation | Round 1 | secure aggregation complete | validation=PASSED
+2026-08-08 01:13:47 | INFO     | federated.server       | Round 1 | GLOBAL model eval -> acc=0.8236 prec=0.7751 rec=0.8419 f1=0.7892 roc_auc=0.9916 loss=0.3920
+2026-08-08 01:13:47 | INFO     | federated.trainer      | Round 1 broadcast -> model_version=global-v1 validation_passed=True
+2026-08-08 01:13:47 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 01:13:47 | INFO     | federated.trainer      | COMMUNICATION ROUND 2 / 10
+2026-08-08 01:13:47 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 01:13:47 | INFO     | federated.server       | Selected participants for this round: [1, 2, 3]
+2026-08-08 01:13:47 | INFO     | federated.client.1     | Round 2 | client 1 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:13:48 | INFO     | federated.client.1     | Round 2 | client 1 | local eval -> acc=0.8711 prec=0.8846 rec=0.9055 f1=0.8888 roc_auc=0.9931 loss=0.2378
+2026-08-08 01:13:48 | INFO     | federated.client.2     | Round 2 | client 2 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:13:50 | INFO     | federated.client.2     | Round 2 | client 2 | local eval -> acc=0.8854 prec=0.8945 rec=0.9124 f1=0.8986 roc_auc=0.9937 loss=0.2141
+2026-08-08 01:13:50 | INFO     | federated.client.3     | Round 2 | client 3 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:13:51 | INFO     | federated.client.3     | Round 2 | client 3 | local eval -> acc=0.8765 prec=0.8892 rec=0.9060 f1=0.8925 roc_auc=0.9935 loss=0.2201
+2026-08-08 01:13:51 | INFO     | federated.aggregation  | Computed aggregation weights (sample_count): {1: 0.3333, 2: 0.3333, 3: 0.3333}
+2026-08-08 01:13:51 | INFO     | encryption.secure_aggregation | Round 2 | starting secure aggregation for 3 clients
+2026-08-08 01:13:51 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=2 dim=72 bytes=331610 hash=e28fa85a5fabf9c5
+2026-08-08 01:13:51 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=2 dim=72 bytes=330968 hash=8a7db8c120684177
+2026-08-08 01:13:51 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=2 dim=72 bytes=331720 hash=6a1620a3c105817f
+2026-08-08 01:13:51 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 01:13:51 | INFO     | encryption.secure_aggregation | Round 2 | secure aggregation complete | validation=PASSED
+2026-08-08 01:13:51 | INFO     | federated.server       | Round 2 | GLOBAL model eval -> acc=0.8721 prec=0.7980 rec=0.8430 f1=0.8097 roc_auc=0.9923 loss=0.2339
+2026-08-08 01:13:51 | INFO     | federated.trainer      | Round 2 broadcast -> model_version=global-v2 validation_passed=True
+2026-08-08 01:13:51 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 01:13:51 | INFO     | federated.trainer      | COMMUNICATION ROUND 3 / 10
+2026-08-08 01:13:51 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 01:13:51 | INFO     | federated.server       | Selected participants for this round: [1, 2, 3]
+2026-08-08 01:13:51 | INFO     | federated.client.1     | Round 3 | client 1 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:13:52 | INFO     | federated.client.1     | Round 3 | client 1 | local eval -> acc=0.8851 prec=0.8867 rec=0.9006 f1=0.8908 roc_auc=0.9934 loss=0.2134
+2026-08-08 01:13:52 | INFO     | federated.client.2     | Round 3 | client 2 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:13:53 | INFO     | federated.client.2     | Round 3 | client 2 | local eval -> acc=0.9048 prec=0.9036 rec=0.9140 f1=0.9073 roc_auc=0.9939 loss=0.1962
+2026-08-08 01:13:53 | INFO     | federated.client.3     | Round 3 | client 3 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:13:54 | INFO     | federated.client.3     | Round 3 | client 3 | local eval -> acc=0.8909 prec=0.8933 rec=0.9062 f1=0.8974 roc_auc=0.9936 loss=0.2019
+2026-08-08 01:13:54 | INFO     | federated.aggregation  | Computed aggregation weights (sample_count): {1: 0.3333, 2: 0.3333, 3: 0.3333}
+2026-08-08 01:13:54 | INFO     | encryption.secure_aggregation | Round 3 | starting secure aggregation for 3 clients
+2026-08-08 01:13:55 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=3 dim=72 bytes=331225 hash=17daea0e2f21b5ae
+2026-08-08 01:13:55 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=3 dim=72 bytes=331482 hash=f5ff76ccc25d79ed
+2026-08-08 01:13:55 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=3 dim=72 bytes=331025 hash=436a0d4fc19b3ec3
+2026-08-08 01:13:55 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 01:13:55 | INFO     | encryption.secure_aggregation | Round 3 | secure aggregation complete | validation=PASSED
+2026-08-08 01:13:55 | INFO     | federated.server       | Round 3 | GLOBAL model eval -> acc=0.9095 prec=0.7987 rec=0.8292 f1=0.8100 roc_auc=0.9925 loss=0.1934
+2026-08-08 01:13:55 | INFO     | federated.trainer      | Round 3 broadcast -> model_version=global-v3 validation_passed=True
+2026-08-08 01:13:55 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 01:13:55 | INFO     | federated.trainer      | COMMUNICATION ROUND 4 / 10
+2026-08-08 01:13:55 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 01:13:55 | INFO     | federated.server       | Selected participants for this round: [1, 2, 3]
+2026-08-08 01:13:55 | INFO     | federated.client.1     | Round 4 | client 1 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:13:56 | INFO     | federated.client.1     | Round 4 | client 1 | local eval -> acc=0.8889 prec=0.8896 rec=0.8985 f1=0.8915 roc_auc=0.9934 loss=0.2082
+2026-08-08 01:13:56 | INFO     | federated.client.2     | Round 4 | client 2 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:13:58 | INFO     | federated.client.2     | Round 4 | client 2 | local eval -> acc=0.9083 prec=0.9052 rec=0.9115 f1=0.9075 roc_auc=0.9939 loss=0.1932
+2026-08-08 01:13:58 | INFO     | federated.client.3     | Round 4 | client 3 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:13:59 | INFO     | federated.client.3     | Round 4 | client 3 | local eval -> acc=0.8959 prec=0.8947 rec=0.9036 f1=0.8979 roc_auc=0.9937 loss=0.1963
+2026-08-08 01:13:59 | INFO     | federated.aggregation  | Computed aggregation weights (sample_count): {1: 0.3333, 2: 0.3333, 3: 0.3333}
+2026-08-08 01:13:59 | INFO     | encryption.secure_aggregation | Round 4 | starting secure aggregation for 3 clients
+2026-08-08 01:13:59 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=4 dim=72 bytes=331684 hash=c1912f364a410287
+2026-08-08 01:13:59 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=4 dim=72 bytes=330936 hash=b121db44dcc44784
+2026-08-08 01:13:59 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=4 dim=72 bytes=331375 hash=78295df030950b48
+2026-08-08 01:13:59 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 01:13:59 | INFO     | encryption.secure_aggregation | Round 4 | secure aggregation complete | validation=PASSED
+2026-08-08 01:14:00 | INFO     | federated.server       | Round 4 | GLOBAL model eval -> acc=0.9221 prec=0.8031 rec=0.8253 f1=0.8121 roc_auc=0.9926 loss=0.1752
+2026-08-08 01:14:00 | INFO     | federated.trainer      | Round 4 broadcast -> model_version=global-v4 validation_passed=True
+2026-08-08 01:14:00 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 01:14:00 | INFO     | federated.trainer      | COMMUNICATION ROUND 5 / 10
+2026-08-08 01:14:00 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 01:14:00 | INFO     | federated.server       | Selected participants for this round: [1, 2, 3]
+2026-08-08 01:14:00 | INFO     | federated.client.1     | Round 5 | client 1 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:14:02 | INFO     | federated.client.1     | Round 5 | client 1 | local eval -> acc=0.8901 prec=0.8882 rec=0.8951 f1=0.8901 roc_auc=0.9934 loss=0.2089
+2026-08-08 01:14:02 | INFO     | federated.client.2     | Round 5 | client 2 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:14:03 | INFO     | federated.client.2     | Round 5 | client 2 | local eval -> acc=0.9118 prec=0.9077 rec=0.9107 f1=0.9086 roc_auc=0.9939 loss=0.1948
+2026-08-08 01:14:03 | INFO     | federated.client.3     | Round 5 | client 3 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:14:06 | INFO     | federated.client.3     | Round 5 | client 3 | local eval -> acc=0.9033 prec=0.8990 rec=0.9050 f1=0.9015 roc_auc=0.9939 loss=0.1934
+2026-08-08 01:14:06 | INFO     | federated.aggregation  | Computed aggregation weights (sample_count): {1: 0.3333, 2: 0.3333, 3: 0.3333}
+2026-08-08 01:14:06 | INFO     | encryption.secure_aggregation | Round 5 | starting secure aggregation for 3 clients
+2026-08-08 01:14:06 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=5 dim=72 bytes=330749 hash=4df458227656e82d
+2026-08-08 01:14:06 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=5 dim=72 bytes=331591 hash=51f6a79460f0cd71
+2026-08-08 01:14:06 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=5 dim=72 bytes=331394 hash=f68e2a617b1c5dfb
+2026-08-08 01:14:06 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 01:14:06 | INFO     | encryption.secure_aggregation | Round 5 | secure aggregation complete | validation=PASSED
+2026-08-08 01:14:06 | INFO     | federated.server       | Round 5 | GLOBAL model eval -> acc=0.9268 prec=0.8046 rec=0.8225 f1=0.8120 roc_auc=0.9926 loss=0.1653
+2026-08-08 01:14:06 | INFO     | federated.trainer      | Round 5 broadcast -> model_version=global-v5 validation_passed=True
+2026-08-08 01:14:06 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 01:14:06 | INFO     | federated.trainer      | COMMUNICATION ROUND 6 / 10
+2026-08-08 01:14:06 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 01:14:06 | INFO     | federated.server       | Selected participants for this round: [1, 2, 3]
+2026-08-08 01:14:06 | INFO     | federated.client.1     | Round 6 | client 1 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:14:08 | INFO     | federated.client.1     | Round 6 | client 1 | local eval -> acc=0.8967 prec=0.8953 rec=0.8986 f1=0.8948 roc_auc=0.9933 loss=0.2137
+2026-08-08 01:14:08 | INFO     | federated.client.2     | Round 6 | client 2 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:14:11 | INFO     | federated.client.2     | Round 6 | client 2 | local eval -> acc=0.9118 prec=0.9073 rec=0.9094 f1=0.9080 roc_auc=0.9938 loss=0.2011
+2026-08-08 01:14:11 | INFO     | federated.client.3     | Round 6 | client 3 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:14:13 | INFO     | federated.client.3     | Round 6 | client 3 | local eval -> acc=0.9067 prec=0.9011 rec=0.9050 f1=0.9028 roc_auc=0.9939 loss=0.1963
+2026-08-08 01:14:13 | INFO     | federated.aggregation  | Computed aggregation weights (sample_count): {1: 0.3333, 2: 0.3333, 3: 0.3333}
+2026-08-08 01:14:13 | INFO     | encryption.secure_aggregation | Round 6 | starting secure aggregation for 3 clients
+2026-08-08 01:14:13 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=6 dim=72 bytes=331502 hash=b017e79c4622e845
+2026-08-08 01:14:13 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=6 dim=72 bytes=331058 hash=65d19ac630e70783
+2026-08-08 01:14:13 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=6 dim=72 bytes=331674 hash=ea30b6f4b681d957
+2026-08-08 01:14:13 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 01:14:13 | INFO     | encryption.secure_aggregation | Round 6 | secure aggregation complete | validation=PASSED
+2026-08-08 01:14:13 | INFO     | federated.server       | Round 6 | GLOBAL model eval -> acc=0.9298 prec=0.8101 rec=0.8306 f1=0.8180 roc_auc=0.9925 loss=0.1620
+2026-08-08 01:14:13 | INFO     | federated.trainer      | Round 6 broadcast -> model_version=global-v6 validation_passed=True
+2026-08-08 01:14:13 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 01:14:13 | INFO     | federated.trainer      | COMMUNICATION ROUND 7 / 10
+2026-08-08 01:14:13 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 01:14:13 | INFO     | federated.server       | Selected participants for this round: [1, 2, 3]
+2026-08-08 01:14:13 | INFO     | federated.client.1     | Round 7 | client 1 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:14:16 | INFO     | federated.client.1     | Round 7 | client 1 | local eval -> acc=0.8967 prec=0.8942 rec=0.8965 f1=0.8936 roc_auc=0.9933 loss=0.2211
+2026-08-08 01:14:16 | INFO     | federated.client.2     | Round 7 | client 2 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:14:20 | INFO     | federated.client.2     | Round 7 | client 2 | local eval -> acc=0.9122 prec=0.9070 rec=0.9087 f1=0.9075 roc_auc=0.9937 loss=0.2093
+2026-08-08 01:14:20 | INFO     | federated.client.3     | Round 7 | client 3 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:14:27 | INFO     | federated.client.3     | Round 7 | client 3 | local eval -> acc=0.9071 prec=0.9018 rec=0.9038 f1=0.9028 roc_auc=0.9939 loss=0.2006
+2026-08-08 01:14:27 | INFO     | federated.aggregation  | Computed aggregation weights (sample_count): {1: 0.3333, 2: 0.3333, 3: 0.3333}
+2026-08-08 01:14:27 | INFO     | encryption.secure_aggregation | Round 7 | starting secure aggregation for 3 clients
+2026-08-08 01:14:27 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=7 dim=72 bytes=331234 hash=bbeb951ca9c895b4
+2026-08-08 01:14:27 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=7 dim=72 bytes=331104 hash=1451d5ac33a00df1
+2026-08-08 01:14:27 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=7 dim=72 bytes=331494 hash=5c91bdbb813ec715
+2026-08-08 01:14:27 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 01:14:27 | INFO     | encryption.secure_aggregation | Round 7 | secure aggregation complete | validation=PASSED
+2026-08-08 01:14:28 | INFO     | federated.server       | Round 7 | GLOBAL model eval -> acc=0.9324 prec=0.8070 rec=0.8204 f1=0.8123 roc_auc=0.9924 loss=0.1602
+2026-08-08 01:14:28 | INFO     | federated.trainer      | Round 7 broadcast -> model_version=global-v7 validation_passed=True
+2026-08-08 01:14:28 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 01:14:28 | INFO     | federated.trainer      | COMMUNICATION ROUND 8 / 10
+2026-08-08 01:14:28 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 01:14:28 | INFO     | federated.server       | Selected participants for this round: [1, 2, 3]
+2026-08-08 01:14:28 | INFO     | federated.client.1     | Round 8 | client 1 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:14:36 | INFO     | federated.client.1     | Round 8 | client 1 | local eval -> acc=0.8982 prec=0.8956 rec=0.8973 f1=0.8946 roc_auc=0.9932 loss=0.2287
+2026-08-08 01:14:36 | INFO     | federated.client.2     | Round 8 | client 2 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:14:43 | INFO     | federated.client.2     | Round 8 | client 2 | local eval -> acc=0.9145 prec=0.9099 rec=0.9097 f1=0.9093 roc_auc=0.9937 loss=0.2179
+2026-08-08 01:14:43 | INFO     | federated.client.3     | Round 8 | client 3 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:14:51 | INFO     | federated.client.3     | Round 8 | client 3 | local eval -> acc=0.9067 prec=0.9016 rec=0.9025 f1=0.9020 roc_auc=0.9939 loss=0.2073
+2026-08-08 01:14:51 | INFO     | federated.aggregation  | Computed aggregation weights (sample_count): {1: 0.3333, 2: 0.3333, 3: 0.3333}
+2026-08-08 01:14:51 | INFO     | encryption.secure_aggregation | Round 8 | starting secure aggregation for 3 clients
+2026-08-08 01:14:51 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=8 dim=72 bytes=331131 hash=60d13ccbdfb955dd
+2026-08-08 01:14:51 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=8 dim=72 bytes=331441 hash=b63af976f8890d3b
+2026-08-08 01:14:51 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=8 dim=72 bytes=331232 hash=e0e72e009634851c
+2026-08-08 01:14:51 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 01:14:51 | INFO     | encryption.secure_aggregation | Round 8 | secure aggregation complete | validation=PASSED
+2026-08-08 01:14:52 | INFO     | federated.server       | Round 8 | GLOBAL model eval -> acc=0.9329 prec=0.8114 rec=0.8290 f1=0.8179 roc_auc=0.9923 loss=0.1611
+2026-08-08 01:14:52 | INFO     | federated.trainer      | Round 8 broadcast -> model_version=global-v8 validation_passed=True
+2026-08-08 01:14:52 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 01:14:52 | INFO     | federated.trainer      | COMMUNICATION ROUND 9 / 10
+2026-08-08 01:14:52 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 01:14:52 | INFO     | federated.server       | Selected participants for this round: [1, 2, 3]
+2026-08-08 01:14:52 | INFO     | federated.client.1     | Round 9 | client 1 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:15:01 | INFO     | federated.client.1     | Round 9 | client 1 | local eval -> acc=0.9002 prec=0.8977 rec=0.8983 f1=0.8957 roc_auc=0.9932 loss=0.2378
+2026-08-08 01:15:01 | INFO     | federated.client.2     | Round 9 | client 2 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:15:10 | INFO     | federated.client.2     | Round 9 | client 2 | local eval -> acc=0.9149 prec=0.9102 rec=0.9090 f1=0.9094 roc_auc=0.9936 loss=0.2276
+2026-08-08 01:15:10 | INFO     | federated.client.3     | Round 9 | client 3 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:15:18 | INFO     | federated.client.3     | Round 9 | client 3 | local eval -> acc=0.9075 prec=0.9022 rec=0.9018 f1=0.9020 roc_auc=0.9938 loss=0.2158
+2026-08-08 01:15:18 | INFO     | federated.aggregation  | Computed aggregation weights (sample_count): {1: 0.3333, 2: 0.3333, 3: 0.3333}
+2026-08-08 01:15:18 | INFO     | encryption.secure_aggregation | Round 9 | starting secure aggregation for 3 clients
+2026-08-08 01:15:18 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=9 dim=72 bytes=331667 hash=07f29c29b6f7f431
+2026-08-08 01:15:18 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=9 dim=72 bytes=331552 hash=14a55baddcd51e27
+2026-08-08 01:15:18 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=9 dim=72 bytes=331560 hash=d5fe1689cab0d3de
+2026-08-08 01:15:18 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 01:15:18 | INFO     | encryption.secure_aggregation | Round 9 | secure aggregation complete | validation=PASSED
+2026-08-08 01:15:19 | INFO     | federated.server       | Round 9 | GLOBAL model eval -> acc=0.9349 prec=0.8088 rec=0.8199 f1=0.8129 roc_auc=0.9922 loss=0.1622
+2026-08-08 01:15:19 | INFO     | federated.trainer      | Round 9 broadcast -> model_version=global-v9 validation_passed=True
+2026-08-08 01:15:19 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 01:15:19 | INFO     | federated.trainer      | COMMUNICATION ROUND 10 / 10
+2026-08-08 01:15:19 | INFO     | federated.trainer      | ======================================================================
+2026-08-08 01:15:19 | INFO     | federated.server       | Selected participants for this round: [1, 2, 3]
+2026-08-08 01:15:19 | INFO     | federated.client.1     | Round 10 | client 1 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:15:29 | INFO     | federated.client.1     | Round 10 | client 1 | local eval -> acc=0.9009 prec=0.8984 rec=0.8989 f1=0.8964 roc_auc=0.9931 loss=0.2478
+2026-08-08 01:15:29 | INFO     | federated.client.2     | Round 10 | client 2 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:15:39 | INFO     | federated.client.2     | Round 10 | client 2 | local eval -> acc=0.9141 prec=0.9094 rec=0.9067 f1=0.9077 roc_auc=0.9935 loss=0.2369
+2026-08-08 01:15:39 | INFO     | federated.client.3     | Round 10 | client 3 | local training start (local_epochs=20, samples=14642)
+2026-08-08 01:15:49 | INFO     | federated.client.3     | Round 10 | client 3 | local eval -> acc=0.9056 prec=0.9000 rec=0.8992 f1=0.8996 roc_auc=0.9938 loss=0.2222
+2026-08-08 01:15:49 | INFO     | federated.aggregation  | Computed aggregation weights (sample_count): {1: 0.3333, 2: 0.3333, 3: 0.3333}
+2026-08-08 01:15:49 | INFO     | encryption.secure_aggregation | Round 10 | starting secure aggregation for 3 clients
+2026-08-08 01:15:49 | INFO     | encryption.encrypt     | Encrypted update | client=1 round=10 dim=72 bytes=331446 hash=f35c4fa528ee66a9
+2026-08-08 01:15:49 | INFO     | encryption.encrypt     | Encrypted update | client=2 round=10 dim=72 bytes=331549 hash=c25ccc41d2d5e1e1
+2026-08-08 01:15:49 | INFO     | encryption.encrypt     | Encrypted update | client=3 round=10 dim=72 bytes=331368 hash=a03abfef74cd18a6
+2026-08-08 01:15:49 | INFO     | encryption.decrypt     | Validation PASSED | max_abs_error=0.000000 mean_abs_error=0.000000 tolerance=0.010000
+2026-08-08 01:15:49 | INFO     | encryption.secure_aggregation | Round 10 | secure aggregation complete | validation=PASSED
+2026-08-08 01:15:51 | INFO     | federated.server       | Round 10 | GLOBAL model eval -> acc=0.9358 prec=0.8094 rec=0.8198 f1=0.8131 roc_auc=0.9921 loss=0.1638
+2026-08-08 01:15:51 | INFO     | federated.trainer      | Round 10 broadcast -> model_version=global-v10 validation_passed=True
+2026-08-08 01:15:51 | INFO     | train                  | Federated training complete in 128.1s
+2026-08-08 01:15:51 | INFO     | train                  | Saved round history + blockchain metadata -> C:\Users\Lenovo\Downloads\Blockchain-Secured-FL-Framework-HE-NIDS\project\outputs\metadata\round_history.json
+2026-08-08 01:15:52 | INFO     | train                  | Saved global ensemble model -> C:\Users\Lenovo\Downloads\Blockchain-Secured-FL-Framework-HE-NIDS\project\outputs\models\global_model.pkl
+2026-08-08 01:15:56 | INFO     | federated.dataset_partition | Loaded global held-out test set | samples=7621 classes=13
+2026-08-08 01:15:56 | INFO     | train                  | All plots saved to C:\Users\Lenovo\Downloads\Blockchain-Secured-FL-Framework-HE-NIDS\project\outputs\plots
+2026-08-08 01:15:56 | INFO     | train                  | FINAL GLOBAL MODEL (round 10) -> acc=0.9358 prec=0.8094 rec=0.8198 f1=0.8131 roc_auc=0.9921 loss=0.1638
+2026-08-08 01:16:14 | INFO     | evaluate               | Loaded global model (global-v10) with 3 client members
+2026-08-08 01:16:14 | INFO     | federated.dataset_partition | Loaded global held-out test set | samples=7621 classes=13
+2026-08-08 01:16:14 | INFO     | evaluate               | Evaluation results: acc=0.9358 prec=0.8094 rec=0.8198 f1=0.8131 roc_auc=0.9921 loss=0.1638
+2026-08-08 01:16:15 | INFO     | evaluate               | Saved evaluation metrics -> C:\Users\Lenovo\Downloads\Blockchain-Secured-FL-Framework-HE-NIDS\project\outputs\metadata\evaluate_metrics.json
