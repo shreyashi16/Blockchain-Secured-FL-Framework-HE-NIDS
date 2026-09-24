@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FL-NIDS Console</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--bg:#F2F5F8;--surface:#fff;--ink:#16232F;--muted:#5B6B7A;--line:#DDE4EB;--brand:#0E7C86;--c2:#4C5FD5;--c3:#C2410C;--soft:#E7F3F4;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A22;--surface:#16242E;--ink:#E6EEF4;--muted:#93A4B3;--line:#263846;--brand:#3FB8C4;--c2:#8C9BFF;--c3:#F08A5D;--soft:#173038}}
+:root[data-theme="dark"]{--bg:#0F1A22;--surface:#16242E;--ink:#E6EEF4;--muted:#93A4B3;--line:#263846;--brand:#3FB8C4;--c2:#8C9BFF;--c3:#F08A5D;--soft:#173038}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 14px/1.5 "IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-variant-numeric:tabular-nums}
+.app{display:grid;grid-template-columns:220px 1fr;min-height:100vh}
+nav{background:var(--surface);border-right:1px solid var(--line);padding:20px 12px;position:sticky;top:0;height:100vh;align-self:start}
+.brand{font-weight:600;font-size:16px;padding:0 10px 4px}.sub{color:var(--muted);font-size:12px;padding:0 10px 18px}
+nav button{display:block;width:100%;text-align:left;background:none;border:0;color:var(--muted);font:inherit;font-weight:500;padding:9px 10px;border-radius:6px;cursor:pointer}
+nav button[aria-current="true"]{background:var(--soft);color:var(--brand)}
+button:focus-visible,label:focus-within{outline:2px solid var(--brand);outline-offset:2px}
+main{padding:24px 28px;max-width:1180px;width:100%}
+h1{font-size:22px;margin:0 0 4px;font-weight:600}h2{font-size:15px;margin:0 0 12px;font-weight:600}
+.lead{color:var(--muted);margin:0 0 18px;max-width:64ch}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin-bottom:18px}
+.bar b{color:var(--c3);font-weight:600}.bar .sp{flex:1}
+.btn{border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:5px 10px;border-radius:6px;font:inherit;font-size:13px;cursor:pointer}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px}
+.kpi .v{font-size:26px;font-weight:600;line-height:1.2}.kpi .l{color:var(--muted);font-size:13px}.kpi .d{font-size:12px;color:var(--brand)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.chart{position:relative;height:280px}
+.row{display:grid;grid-template-columns:150px 1fr 56px;gap:10px;align-items:center;padding:4px 0;font-size:13px}
+.row span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.trk{height:10px;background:var(--bg);border-radius:5px;overflow:hidden}.trk i{display:block;height:100%;background:var(--brand);border-radius:5px}
+.row em{font-style:normal;color:var(--muted);text-align:right}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.chip{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:14px;padding:3px 12px;font:inherit;font-size:13px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}
+.dv{display:grid;grid-template-columns:170px 1fr 1fr 64px;gap:8px;align-items:center;padding:4px 0;font-size:13px}
+.dv .l{display:flex;justify-content:flex-end}.dv .l i{background:var(--brand);height:10px;border-radius:5px 0 0 5px}
+.dv .r i{background:var(--c3);height:10px;border-radius:0 5px 5px 0;display:block}
+.dv .l i,.dv .r i{display:block}.dv small{color:var(--muted)}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}th{color:var(--muted);font-weight:500}
+code{font:12px ui-monospace,Menlo,Consolas,monospace}
+.tag{display:inline-block;padding:1px 8px;border-radius:10px;background:var(--soft);color:var(--brand);font-size:12px}
+.note{color:var(--muted);font-size:13px;margin:10px 0 0}
+@media(max-width:820px){.app{grid-template-columns:1fr}nav{position:static;height:auto;display:flex;gap:4px;overflow-x:auto;padding:10px;border-right:0;border-bottom:1px solid var(--line)}
+nav .brand,nav .sub{display:none}nav button{width:auto;white-space:nowrap}main{padding:16px}.grid2{grid-template-columns:1fr}
+.row{grid-template-columns:110px 1fr 50px}.dv{grid-template-columns:110px 1fr 1fr 56px}}
+@media(prefers-reduced-motion:no-preference){.trk i{transition:width .5s}}
+</style>
+</head>
+<body>
+<div class="app">
+<nav aria-label="Sections">
+  <div class="brand">FL-NIDS Console</div><div class="sub">Federated intrusion detection</div>
+  <button data-t="overview" aria-current="true">Overview</button>
+  <button data-t="training">Training rounds</button>
+  <button data-t="xai">Explainability</button>
+  <button data-t="ledger">Privacy and audit</button>
+</nav>
+<main>
+  <div class="bar" id="bar"></div>
+  <section id="overview"></section>
+  <section id="training" hidden></section>
+  <section id="xai" hidden></section>
+  <section id="ledger" hidden></section>
+</main>
+</div>
+<input type="file" id="f1" accept=".json" hidden><input type="file" id="f2" accept=".json" hidden>
+<script>
+const $=s=>document.querySelector(s),css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const pct=v=>(v*100).toFixed(1)+'%',esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let D,charts=[],tab='overview',cls=null,sample=true;
+
+function hex(seed){let x=seed*2654435761>>>0,o='';for(let i=0;i<64;i++){x^=x<<13;x>>>=0;x^=x>>>17;x^=x<<5;x>>>=0;o+=(x&15).toString(16)}return o}
+function demo(){
+  const rounds=[...Array(10)].map((_,i)=>{const r=i+1,g=1-Math.exp(-r/2.6);
+    return{round:r,global:{accuracy:.80+.155*g,f1:.74+.19*g,loss:1.05-.8*g},
+      clients:{'Org A':{accuracy:.78+.15*g,f1:.70+.18*g},'Org B':{accuracy:.79+.16*g,f1:.72+.18*g},'Org C':{accuracy:.77+.14*g,f1:.69+.17*g}},
+      he:{passed:true,max_err:2e-6*(1+i%3)}}});
+  const ledger=[];rounds.forEach(r=>['Org A','Org B','Org C'].forEach((c,j)=>ledger.push({round:r.round,client:c,hash:hex(r.round*7+j+1),size:262144+j*512,weight:.333,version:'v'+r.round})));
+  const F=(a)=>a.map(([name,value])=>({name,value}));
+  return{rounds,ledger,xai:{n_samples:500,global:F([['Flow Duration',.42],['Fwd Pkts/s',.35],['Dst Port',.31],['Flow IAT Mean',.27],['SYN Flag Cnt',.22],['Pkt Len Std',.19],['Init Fwd Win Byts',.15],['Bwd Pkt Len Max',.12],['Idle Std',.09],['Active Mean',.07]]),
+    per_class:{'Benign':F([['Dst Port',.5],['Flow Duration',.33],['Pkt Len Std',.21],['Flow IAT Mean',.16],['Idle Std',.1],['Active Mean',.08]]),
+    'DDoS':F([['Fwd Pkts/s',.71],['Flow IAT Mean',.44],['SYN Flag Cnt',.4],['Flow Duration',.28],['Init Fwd Win Byts',.2],['Bwd Pkt Len Max',.11]]),
+    'Brute Force':F([['Dst Port',.62],['Flow Duration',.37],['Init Fwd Win Byts',.3],['Fwd Pkts/s',.2],['Pkt Len Std',.14],['Idle Std',.09]]),
+    'Botnet':F([['Idle Std',.4],['Active Mean',.36],['Flow Duration',.3],['Dst Port',.22],['Flow IAT Mean',.15],['Bwd Pkt Len Max',.1]])},
+    local:{flow_index:0,predicted:'DDoS',contributions:[{name:'Fwd Pkts/s',feature_value:2.9,shap:1.42},{name:'SYN Flag Cnt',feature_value:1.8,shap:.88},{name:'Flow IAT Mean',feature_value:-1.2,shap:.71},{name:'Flow Duration',feature_value:-0.4,shap:.32},{name:'Dst Port',feature_value:0.1,shap:-.18},{name:'Pkt Len Std',feature_value:.6,shap:-.35},{name:'Init Fwd Win Byts',feature_value:-.2,shap:-.52},{name:'Idle Std',feature_value:-.1,shap:-.04}]}}};
+}
+function normRounds(j){
+  const a=Array.isArray(j)?j:(j.rounds||j.history||[]);
+  return a.map((r,i)=>{const g=r.global_metrics||r.global||{},cs=r.client_metrics||r.clients||{};
+    const cl={};(Array.isArray(cs)?cs.map((c,k)=>['Client '+(c.client_id??k+1),c]):Object.entries(cs)).forEach(([k,c])=>cl[k]={accuracy:c.accuracy??c.acc,f1:c.f1??c.f1_macro??c.macro_f1});
+    return{round:r.round_num??r.round??i+1,global:{accuracy:g.accuracy,f1:g.f1??g.f1_macro??g.macro_f1,loss:g.loss??g.log_loss},clients:cl,he:r.he||r.he_validation||null,meta:r.blockchain_metadata||r.metadata||[]}});
+}
+function ledgerFrom(rs){const o=[];rs.forEach(r=>(r.meta||[]).forEach(m=>o.push({round:m.round_num??r.round,client:'Client '+m.client_id,hash:m.encrypted_update_hash,size:m.ciphertext_size_bytes,weight:m.aggregation_weight,version:m.model_version})));return o}
+
+function bars(list,max){max=max||Math.max(...list.map(x=>x.value));return list.map(x=>`<div class="row"><span title="${esc(x.name)}">${esc(x.name)}</span><div class="trk"><i style="width:${x.value/max*100}%"></i></div><em>${x.value.toFixed(2)}</em></div>`).join('')}
+function line(id,labels,sets,fmt){charts.push(new Chart($(id),{type:'line',data:{labels,datasets:sets.map((s,i)=>({label:s.n,data:s.d,borderColor:s.c,backgroundColor:s.c,borderWidth:s.w||2,pointRadius:s.w?3:2,tension:.3}))},
+  options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{labels:{color:css('--muted'),boxWidth:10}},tooltip:{callbacks:{label:c=>c.dataset.label+': '+fmt(c.parsed.y)}}},
+  scales:{x:{title:{display:true,text:'Communication round',color:css('--muted')},ticks:{color:css('--muted')},grid:{display:false}},y:{ticks:{color:css('--muted'),callback:fmt},grid:{color:css('--line')}}}}}))}
+
+function render(){
+  charts.forEach(c=>c.destroy());charts=[];
+  const R=D.rounds,L=R[R.length-1]||{global:{},clients:{}},F=R[0]||{global:{}};
+  $('#bar').innerHTML=(sample?'<b>Sample data</b><span>Load your run\'s files to see real results.</span>':'<span class="tag">Your data</span>')+
+   '<span class="sp"></span><button class="btn" id="l1">Load round_history.json</button><button class="btn" id="l2">Load xai_report.json</button>';
+  $('#l1').onclick=()=>$('#f1').click();$('#l2').onclick=()=>$('#f2').click();
+  const he=R.filter(r=>r.he),hp=he.filter(r=>r.he.passed??r.he.validation_passed).length;
+  const dlt=(a,b)=>(a!=null&&b!=null)?`+${((a-b)*100).toFixed(1)} pts since round 1`:'';
+  $('#overview').innerHTML=`<h1>Overview</h1><p class="lead">How the shared intrusion detection model performs after each round of federated training across the participating organizations.</p>
+   <div class="kpis"><div class="card kpi"><div class="l">Global accuracy</div><div class="v">${L.global.accuracy!=null?pct(L.global.accuracy):'–'}</div><div class="d">${dlt(L.global.accuracy,F.global.accuracy)}</div></div>
+   <div class="card kpi"><div class="l">Macro F1</div><div class="v">${L.global.f1!=null?pct(L.global.f1):'–'}</div><div class="d">${dlt(L.global.f1,F.global.f1)}</div></div>
+   <div class="card kpi"><div class="l">Rounds completed</div><div class="v">${R.length}</div><div class="d">${Object.keys(L.clients).length} organizations</div></div>
+   <div class="card kpi"><div class="l">Encrypted aggregation checks</div><div class="v">${he.length?hp+'/'+he.length:'–'}</div><div class="d">${he.length?'decrypted result matched plaintext':'no data'}</div></div></div>
+   <div class="card"><h2>Global model by round</h2><div class="chart"><canvas id="c1"></canvas></div></div>`;
+  $('#training').innerHTML=`<h1>Training rounds</h1><p class="lead">Compare each organization's local model with the global model, and watch the loss settle.</p>
+   <div class="grid2"><div class="card"><h2>Accuracy: global and local</h2><div class="chart"><canvas id="c2"></canvas></div></div><div class="card"><h2>Global loss</h2><div class="chart"><canvas id="c3"></canvas></div></div></div>
+   <div class="card scroll" style="margin-top:12px"><h2>Final round by organization</h2><table><tr><th>Organization</th><th>Accuracy</th><th>Macro F1</th></tr>${Object.entries(L.clients).map(([k,c])=>`<tr><td>${esc(k)}</td><td>${c.accuracy!=null?pct(c.accuracy):'–'}</td><td>${c.f1!=null?pct(c.f1):'–'}</td></tr>`).join('')}<tr><td><b>Global model</b></td><td><b>${L.global.accuracy!=null?pct(L.global.accuracy):'–'}</b></td><td><b>${L.global.f1!=null?pct(L.global.f1):'–'}</b></td></tr></table></div>`;
+  const X=D.xai,names=Object.keys(X.per_class||{});if(!cls||!names.includes(cls))cls=names[0];
+  const lc=X.local.contributions,mx=Math.max(...lc.map(c=>Math.abs(c.shap)));
+  $('#xai').innerHTML=`<h1>Explainability</h1><p class="lead">SHAP shows which traffic features drive the model's decisions, across all traffic and for a single flagged flow. Based on ${X.n_samples} test flows.</p>
+   <div class="grid2"><div class="card"><h2>What matters most overall</h2>${bars(X.global.slice(0,10))}<p class="note">Average impact on the model's output. Higher means the feature matters more.</p></div>
+   <div class="card"><h2>What matters for each traffic type</h2><div class="chips">${names.map(n=>`<button class="chip" aria-pressed="${n===cls}" data-c="${esc(n)}">${esc(n)}</button>`).join('')}</div>${bars(X.per_class[cls])}</div></div>
+   <div class="card" style="margin-top:12px"><h2>Why flow #${X.local.flow_index} was classified as ${esc(X.local.predicted)}</h2>
+   <div class="dv" style="color:var(--muted);font-size:12px"><span></span><span style="text-align:right">Against ${esc(X.local.predicted)}</span><span>Toward ${esc(X.local.predicted)}</span><span></span></div>
+   ${lc.map(c=>`<div class="dv"><span>${esc(c.name)}<br><small>value ${c.feature_value.toFixed(2)}</small></span><div class="l">${c.shap<0?`<i style="width:${-c.shap/mx*100}%"></i>`:''}</div><div class="r">${c.shap>0?`<i style="width:${c.shap/mx*100}%"></i>`:''}</div><em style="font-style:normal;text-align:right">${c.shap>0?'+':''}${c.shap.toFixed(2)}</em></div>`).join('')}
+   <p class="note">Feature values are standardized, so 0 is average traffic. Bars show how far each feature pushed the prediction.</p></div>`;
+  document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{cls=b.dataset.c;render();show(tab)});
+  const led=D.ledger;
+  $('#ledger').innerHTML=`<h1>Privacy and audit</h1><p class="lead">Each organization's model update is encrypted before it is combined, and a fingerprint of every update is recorded for later verification.</p>
+   <div class="card scroll"><h2>Update records <span class="tag">Not yet anchored on a blockchain</span></h2>${led.length?`<table><tr><th>Round</th><th>Organization</th><th>Update fingerprint (SHA-256)</th><th>Size</th><th>Weight</th><th>Model</th></tr>${led.map(l=>`<tr><td>${l.round}</td><td>${esc(l.client)}</td><td><code>${esc(String(l.hash).slice(0,12))}…${esc(String(l.hash).slice(-8))}</code></td><td>${(l.size/1024).toFixed(0)} KB</td><td>${(l.weight*100).toFixed(1)}%</td><td>${esc(l.version)}</td></tr>`).join('')}</table>`:'<p class="note">No records found. Load round_history.json from a training run.</p>'}</div>`;
+  const lb=R.map(r=>r.round),ch=[['Org A',css('--brand')],['Org B',css('--c2')],['Org C',css('--c3')]];
+  if($('#c1')){line('#c1',lb,[{n:'Accuracy',d:R.map(r=>r.global.accuracy),c:css('--brand'),w:3},{n:'Macro F1',d:R.map(r=>r.global.f1),c:css('--c2'),w:3}],v=>pct(v));
+   const ks=Object.keys(L.clients),cs=[css('--c2'),css('--c3'),css('--muted')];
+   line('#c2',lb,[{n:'Global',d:R.map(r=>r.global.accuracy),c:css('--brand'),w:3},...ks.map((k,i)=>({n:k,d:R.map(r=>r.clients[k]?.accuracy),c:cs[i%3]}))],v=>pct(v));
+   line('#c3',lb,[{n:'Loss',d:R.map(r=>r.global.loss),c:css('--c3'),w:3}],v=>Number(v).toFixed(2))}
+}
+function show(t){tab=t;document.querySelectorAll('main section').forEach(s=>s.hidden=s.id!==t);document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-current',b.dataset.t===t));
+  charts.forEach(c=>c.resize())}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>show(b.dataset.t));
+function readJSON(f,cb){const r=new FileReader();r.onload=()=>{try{cb(JSON.parse(r.result));sample=false;render();show(tab)}catch(e){alert('Could not read that file: '+e.message+'. Choose the JSON written by train.py or xai/explain.py.')}};r.readAsText(f)}
+$('#f1').onchange=e=>e.target.files[0]&&readJSON(e.target.files[0],j=>{const rs=normRounds(j);if(!rs.length)throw new Error('no rounds found');D.rounds=rs;const l=ledgerFrom(rs);if(l.length)D.ledger=l});
+$('#f2').onchange=e=>e.target.files[0]&&readJSON(e.target.files[0],j=>{if(!j.global||!j.local)throw new Error('missing "global" or "local"');D.xai=j});
+matchMedia('(prefers-color-scheme:dark)').addEventListener('change',()=>{render();show(tab)});
+D=demo();render();show('overview');
+</script>
+</body>
+</html>
